@@ -89,6 +89,13 @@ func (this *Filename) String() string {
 	}
 }
 
+func (this *Filename) Location() *Location {
+	ret := Location{}
+	ret.XLogId = this.XLogId
+	ret.Offset = this.Segment * xlog_seg_size
+	return &ret
+}
+
 func (this *Filename) Next() *Filename {
 	ret := Filename{}
 	ret.Timeline = this.Timeline
